@@ -11,15 +11,13 @@ namespace NegoSud.Data
 
 		}
 
-		//public virtual DbSet<Customer> Customers => Set<Customer>();// créer la BDD avec les entités de customer
-
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			base.OnConfiguring(optionsBuilder);
-			optionsBuilder.UseSqlite("Data Source=negosuddb.db");
-		}
-
-		public DbSet<Customer> Customers { get; set; }
-	}
+        // créer la BDD avec les entités
+		public DbSet<User> Users { get; set; }
+		public DbSet<Supplier> Suppliers { get; set; }
+		public DbSet<Product> Products { get; set; }
+		public DbSet<Category> Categorys { get; set; }
+        public DbSet<Order> Orders { get; set; }
+		public DbSet<OrderProduct> OrderProducts { get; set; }
+    }
 }
 

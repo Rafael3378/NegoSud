@@ -1,10 +1,9 @@
 ﻿using System;
-namespace NegoSud.Server.Models
-{
-	public class User
-	{
-        public int Id { get; set; }
 
+namespace NegoSud.Server.DTO
+{
+	public class PostUser
+	{
         public string Login { get; set; } = string.Empty;
 
         public string Password { get; set; } = string.Empty;
@@ -24,6 +23,6 @@ namespace NegoSud.Server.Models
         public string Street { get; set; } = string.Empty;
 
         public string Role { get; set; } = string.Empty;
-	}
+    }
 }
 

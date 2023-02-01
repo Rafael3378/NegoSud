@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>NegoSud</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
@@ -24,7 +24,6 @@
     <None Remove="Models\" />
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Services\" />
-    <None Remove="Services\CustomerService\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
@@ -32,11 +31,30 @@
     <None Remove="Microsoft.Data.SqlClient" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
     <None Remove="Data\" />
+    <None Remove="Services\ProductService\" />
+    <None Remove="Services\CategoryService\" />
+    <None Remove="Migrations\" />
+    <None Remove="DTO\" />
+    <None Remove="DTO\Product\" />
+    <None Remove="Services\OrderService\" />
+    <None Remove="DTO\Category\" />
+    <None Remove="DTO\Order\" />
+    <None Remove="DTO\User\" />
+    <None Remove="DTO\Supplier\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
-    <Folder Include="Services\CustomerService\" />
     <Folder Include="Data\" />
+    <Folder Include="Services\ProductService\" />
+    <Folder Include="Services\CategoryService\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="DTO\" />
+    <Folder Include="DTO\Product\" />
+    <Folder Include="Services\OrderService\" />
+    <Folder Include="DTO\Category\" />
+    <Folder Include="DTO\Order\" />
+    <Folder Include="DTO\User\" />
+    <Folder Include="DTO\Supplier\" />
   </ItemGroup>
 </Project>

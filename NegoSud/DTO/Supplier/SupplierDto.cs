@@ -1,17 +1,13 @@
 ﻿using System;
-namespace NegoSud.Server.Models
+namespace NegoSud.Server.DTO
 {
-	public class User
+	public class SupplierDto
 	{
         public int Id { get; set; }
 
-        public string Login { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
 
-        public string Password { get; set; } = string.Empty;
-
-        public string LastName { get; set; } = string.Empty;
-
-        public string FirstName { get; set; } = string.Empty;
+        public string Siret { get; set; } = string.Empty;
 
         public string Email { get; set; } = string.Empty;
 
@@ -22,8 +18,6 @@ namespace NegoSud.Server.Models
         public string ZipCode { get; set; } = string.Empty;
 
         public string Street { get; set; } = string.Empty;
-
-        public string Role { get; set; } = string.Empty;
-	}
+    }
 }
 

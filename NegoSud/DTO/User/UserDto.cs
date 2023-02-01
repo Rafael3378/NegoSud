@@ -1,7 +1,7 @@
 ﻿using System;
-namespace NegoSud.Server.Models
+namespace NegoSud.Server.DTO
 {
-	public class User
+	public class UserDto
 	{
         public int Id { get; set; }
 
@@ -24,6 +24,6 @@ namespace NegoSud.Server.Models
         public string Street { get; set; } = string.Empty;
 
         public string Role { get; set; } = string.Empty;
-	}
+    }
 }
 

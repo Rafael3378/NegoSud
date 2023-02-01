@@ -2,15 +2,16 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NegoSud.Server.DTO
+namespace NegoSud.Server.Models
 {
-	public class ProductDto
+	public class Product
 	{
+        [Key]
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        public string Ref { get; set; } 
+        public string Ref { get; set; } = string.Empty;
 
         public int UnitPrice { get; set; }
 
@@ -20,20 +21,21 @@ namespace NegoSud.Server.DTO
 
         public int UpdateDate { get; set; }
 
-        public string Millesime { get; set; }
+        public string Millesime { get; set; } = string.Empty;
 
         public int Stock { get; set; }
 
         public int StockTreshold { get; set; }
 
+        [ForeignKey("CategoryId")]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
-        public int OrderProductId { get; set; }
-        public OrderProduct OrderProduct { get; set; }
-
+        [ForeignKey("SupplierId")]
         public int SupplierId { get; set; }
         public Supplier Supplier { get; set; }
+
+        public List<OrderProduct> Orders { get; set; }
 
     }
 }
