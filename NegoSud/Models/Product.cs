@@ -9,30 +9,32 @@ namespace NegoSud.Server.Models
         [Key]
         public int Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; }
 
-        public string Ref { get; set; } = string.Empty;
+        public string Ref { get; set; }
 
-        public int UnitPrice { get; set; }
+        public string UnitPrice { get; set; }
 
-        public int PackPrice { get; set; }
+        public string PackPrice { get; set; }
 
-        public int CreationDate { get; set; }
+        public string CreationDate { get; set; }
 
-        public int UpdateDate { get; set; }
+        public string UpdateDate { get; set; }
 
-        public string Millesime { get; set; } = string.Empty;
+        public string Millesime { get; set; }
 
-        public int Stock { get; set; }
+        public string Stock { get; set; }
 
-        public int StockTreshold { get; set; }
+        public string StockTreshold { get; set; }
 
         [ForeignKey("CategoryId")]
         public int CategoryId { get; set; }
+
         public Category Category { get; set; }
 
         [ForeignKey("SupplierId")]
         public int SupplierId { get; set; }
+
         public Supplier Supplier { get; set; }
 
         public List<OrderProduct> Orders { get; set; }

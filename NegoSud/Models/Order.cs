@@ -9,11 +9,11 @@ namespace NegoSud.Server.Models
         [Key]
         public int Id { get; set; }
 
-        public string CreationDate { get; set; } = string.Empty;
+        public string CreationDate { get; set; }
 
-        public string State { get; set; } = string.Empty;
+        public string State { get; set; }
 
-        public string Quantity { get; set; } = string.Empty;
+        public string Quantity { get; set; }
 
         public int Archived { get; set; }
 

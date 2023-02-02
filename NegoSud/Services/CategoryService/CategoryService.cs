@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using NegoSud.Server.DTO;
+using NegoSud.Server.Models;
 
 namespace NegoSud.Server.Services.CategoryService
 {
@@ -25,7 +26,9 @@ namespace NegoSud.Server.Services.CategoryService
             _context.Categorys.Add(category);
             await _context.SaveChangesAsync();
 
-            return new CategoryDto { Name = category.Name, Description = category.Description };
+            return new CategoryDto {
+                Name = category.Name,
+                Description = category.Description };
 
         }
 
@@ -48,7 +51,10 @@ namespace NegoSud.Server.Services.CategoryService
             var listCategoryDto = new List<CategoryDto>();
             foreach (var item in category)
             {
-                var categorydto = new CategoryDto { Id = item.Id };
+                var categorydto = new CategoryDto {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Description = item.Description };
                 listCategoryDto.Add(categorydto);
             }
             return listCategoryDto;
@@ -59,7 +65,9 @@ namespace NegoSud.Server.Services.CategoryService
             var category = await _context.Categorys.FindAsync(id);
             if (category is null)
                 return null;
-            var categorydto = new CategoryDto { Name = category.Name, Description = category.Description };
+            var categorydto = new CategoryDto {
+                Name = category.Name,
+                Description = category.Description };
 
             return categorydto;
         }
@@ -70,11 +78,15 @@ namespace NegoSud.Server.Services.CategoryService
             if (category is null)
                 return null;
 
-            category.Name = request.Name;
-            category.Description = request.Description;
+            if (request.Name != string.Empty)
+                category.Name = request.Name;
+            if (request.Name != string.Empty)
+                category.Name = request.Name;
 
             await _context.SaveChangesAsync();
-            var categorydto = new CategoryDto { Name = category.Name, Description = category.Description };
+            var categorydto = new CategoryDto {
+                Name = category.Name,
+                Description = category.Description };
 
             return categorydto;
         }

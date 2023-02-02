@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using NegoSud.Server.DTO;
+using NegoSud.Server.Models;
 
 namespace NegoSud.Server.Services.SupplierService
 {
@@ -61,7 +63,16 @@ namespace NegoSud.Server.Services.SupplierService
             var listsupplierdto = new List<SupplierDto>();
             foreach (var item in supplier)
             {
-                var supplierdto = new SupplierDto { Id = item.Id };
+                var supplierdto = new SupplierDto {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Siret = item.Siret,
+                    Email = item.Email,
+                    Phone = item.Phone,
+                    City = item.City,
+                    ZipCode = item.ZipCode,
+                    Street = item.Street,
+                };
                 listsupplierdto.Add(supplierdto);
             }
             return listsupplierdto;
@@ -94,13 +105,20 @@ namespace NegoSud.Server.Services.SupplierService
             if (supplier is null)
                 return null;
 
-            supplier.Name = request.Name;
-            supplier.Siret = request.Siret;
-            supplier.Email = request.Email;
-            supplier.Phone = request.Phone;
-            supplier.City = request.City;
-            supplier.ZipCode = request.ZipCode;
-            supplier.Street = request.Street;
+            if (request.Name != string.Empty)
+                supplier.Name = request.Name;
+            if (request.Siret != string.Empty)
+                supplier.Siret = request.Siret;
+            if (request.Email != string.Empty)
+                supplier.Email = request.Email;
+            if (request.Phone != string.Empty)
+                supplier.Phone = request.Phone;
+            if (request.City != string.Empty)
+                supplier.City = request.City;
+            if (request.ZipCode != string.Empty)
+                supplier.ZipCode = request.ZipCode;
+            if (request.Street != string.Empty)
+                supplier.Street = request.Street;
 
             await _context.SaveChangesAsync();
             var supplierdto = new SupplierDto

@@ -43,23 +43,6 @@ namespace NegoSud.Server.Controllers
             return Ok(result);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<List<OrderDto>>> UpdateOrder(int id, PostOrder request)
-        {
-            var result = await _orderService.UpdateOrder(id, request);
-            if (result is null)
-                return NotFound("Désolé mais ce commande n'existe que dans tes rêves :(");
-            return Ok(result);
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<List<OrderDto>>> DeleteOrder(int id)
-        {
-            var result = await _orderService.DeleteOrder(id);
-            if (!result)
-                return NotFound("Désolé mais ce commande n'existe que dans tes rêves :(");
-            return Ok(result);
-        }
     }
 }
 

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using NegoSud.Server.DTO;
+using NegoSud.Server.Models;
 
 namespace NegoSud.Server.Services.UserService
 {
@@ -21,6 +23,7 @@ namespace NegoSud.Server.Services.UserService
             user.Password = request.Password;
             user.LastName = request.LastName;
             user.FirstName = request.FirstName;
+            user.LastName = request.LastName;
             user.Email = request.Email;
             user.Phone = request.Phone;
             user.City = request.City;
@@ -36,6 +39,7 @@ namespace NegoSud.Server.Services.UserService
                 Login = user.Login,
                 Password = user.Password,
                 FirstName = user.FirstName,
+                LastName = user.LastName,
                 Email = user.Email,
                 Phone = user.Phone,
                 City = user.City,
@@ -64,7 +68,19 @@ namespace NegoSud.Server.Services.UserService
             var listuserdto = new List<UserDto>();
             foreach (var item in user)
             {
-                var userdto = new UserDto { Id = item.Id };
+                var userdto = new UserDto {
+                    Id = item.Id,
+                    Login = item.Login,
+                    Password = item.Password,
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    Email = item.Email,
+                    Phone = item.Phone,
+                    City = item.City,
+                    ZipCode = item.ZipCode,
+                    Street = item.Street,
+                    Role = item.Role,
+                };
                 listuserdto.Add(userdto);
             }
             return listuserdto;
@@ -82,6 +98,7 @@ namespace NegoSud.Server.Services.UserService
                 Login = user.Login,
                 Password = user.Password,
                 FirstName = user.FirstName,
+                LastName = user.LastName,
                 Email = user.Email,
                 Phone = user.Phone,
                 City = user.City,
@@ -99,16 +116,26 @@ namespace NegoSud.Server.Services.UserService
             if (user is null)
                 return null;
 
-            user.Login = request.Login;
-            user.Password = request.Password;
-            user.LastName = request.LastName;
-            user.FirstName = request.FirstName;
-            user.Email = request.Email;
-            user.Phone = request.Phone;
-            user.City = request.City;
-            user.ZipCode = request.ZipCode;
-            user.Street = request.Street;
-            user.Role = request.Role;
+            if (request.Login != string.Empty)
+                user.Login = request.Login;
+            if (request.Password != string.Empty)
+                user.Password = request.Password;
+            if (request.FirstName != string.Empty)
+                user.FirstName = request.FirstName;
+            if (request.LastName != string.Empty)
+                user.LastName = request.LastName;
+            if (request.Email != string.Empty)
+                user.Email = request.Email;
+            if (request.Phone != string.Empty)
+                user.Phone = request.Phone;
+            if (request.City != string.Empty)
+                user.City = request.City;
+            if (request.ZipCode != string.Empty)
+                user.ZipCode = request.ZipCode;
+            if (request.Street != string.Empty)
+                user.Street = request.Street;
+            if (request.Role != string.Empty)
+                user.Role = request.Role;
 
             await _context.SaveChangesAsync();
             var userdto = new UserDto
@@ -117,6 +144,7 @@ namespace NegoSud.Server.Services.UserService
                 Login = user.Login,
                 Password = user.Password,
                 FirstName = user.FirstName,
+                LastName = user.LastName,
                 Email = user.Email,
                 Phone = user.Phone,
                 City = user.City,

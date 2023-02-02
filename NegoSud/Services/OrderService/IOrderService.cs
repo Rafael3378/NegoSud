@@ -10,10 +10,6 @@ namespace NegoSud.Server.Services.OrderService
         Task<OrderDto> GetSingleOrder(int id);
 
         Task<OrderDto> AddOrder(PostOrder order);
-
-        Task<OrderDto> UpdateOrder(int id, PostOrder request);
-
-        Task<bool> DeleteOrder(int id);
     }
 }
 

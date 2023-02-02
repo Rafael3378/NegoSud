@@ -36,20 +36,12 @@ namespace NegoSud.Server.Services.OrderService
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
-            return new OrderDto { CreationDate = order.CreationDate, State = order.State, Quantity = order.Quantity, Archived = order.Archived, UserId = order.UserId};
-
-        }
-
-        public async Task<bool> DeleteOrder(int id)
-        {
-            var order = await _context.Orders.FindAsync(id);
-            if (order is null)
-                return false;
-
-            _context.Orders.Remove(order);
-            await _context.SaveChangesAsync();
-
-            return true;
+            return new OrderDto {
+                CreationDate = order.CreationDate,
+                State = order.State,
+                Quantity = order.Quantity,
+                Archived = order.Archived,
+                UserId = order.UserId};
 
         }
 
@@ -70,34 +62,15 @@ namespace NegoSud.Server.Services.OrderService
             var order = await _context.Orders.FindAsync(id);
             if (order is null)
                 return null;
-            var orderdto = new OrderDto { CreationDate = order.CreationDate, State = order.State, Quantity = order.Quantity, Archived = order.Archived, UserId = order.UserId };
+            var orderdto = new OrderDto {
+                CreationDate = order.CreationDate,
+                State = order.State, Quantity =
+                order.Quantity,
+                Archived = order.Archived,
+                UserId = order.UserId };
 
             return orderdto;
         }
 
-        public async Task<OrderDto> UpdateOrder(int id, PostOrder request)
-        {
-            var order = await _context.Orders.FindAsync(id);
-            if (order is null)
-                return null;
-
-            order.CreationDate = request.CreationDate;
-            order.State = request.State;
-            order.Quantity = request.Quantity;
-            order.Archived = request.Archived;
-            order.UserId = request.UserId;
-            foreach (var item in request.Products)
-            {
-                var orderporduct = new OrderProduct { ProductId = item };
-                order.Products.Add(orderporduct);
-
-            }
-
-
-            await _context.SaveChangesAsync();
-            var orderdto = new OrderDto { CreationDate = order.CreationDate, State = order.State, Quantity = order.Quantity, Archived = order.Archived, UserId = order.UserId };
-
-            return orderdto;
-        }
     }
 }

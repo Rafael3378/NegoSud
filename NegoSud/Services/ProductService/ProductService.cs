@@ -67,7 +67,20 @@ namespace NegoSud.Server.Services.ProductService
             var listProductDto = new List<ProductDto>();
             foreach (var item in product)
             {
-                var productdto = new ProductDto { Id = item.Id};
+                var productdto = new ProductDto {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Ref = item.Ref,
+                    UnitPrice = item.UnitPrice,
+                    PackPrice = item.PackPrice,
+                    CreationDate = item.CreationDate,
+                    UpdateDate = item.UpdateDate,
+                    Millesime = item.Millesime,
+                    Stock = item.Stock,
+                    StockTreshold = item.StockTreshold,
+                    CategoryId = item.CategoryId,
+                    SupplierId = item.SupplierId
+                };
                 listProductDto.Add(productdto);
             }
             return listProductDto;
@@ -101,15 +114,24 @@ namespace NegoSud.Server.Services.ProductService
             if (product is null)
                 return null;
 
-            product.Name = request.Name;
-            product.Ref = request.Ref;
-            product.UnitPrice = request.UnitPrice;
-            product.PackPrice = request.PackPrice;
-            product.CreationDate = request.CreationDate;
-            product.UpdateDate = request.UpdateDate;
-            product.Millesime = request.Millesime;
-            product.Stock = request.Stock;
-            product.StockTreshold = request.StockTreshold;
+            if (request.Name != string.Empty)
+                product.Name = request.Name;
+            if (request.Ref != string.Empty)
+                product.Ref = request.Ref;
+            if (request.UnitPrice != string.Empty)
+                product.UnitPrice = request.UnitPrice;
+            if (request.PackPrice != string.Empty)
+                product.PackPrice = request.PackPrice;
+            if (request.CreationDate != string.Empty)
+                product.CreationDate = request.CreationDate;
+            if (request.UpdateDate != string.Empty)
+                product.UpdateDate = request.UpdateDate;
+            if (request.Millesime != string.Empty)
+                product.Millesime = request.Millesime;
+            if (request.Stock != string.Empty)
+                product.Stock = request.Stock;
+            if (request.StockTreshold != string.Empty)
+                product.StockTreshold = request.StockTreshold;
             product.CategoryId = request.CategoryId;
             product.SupplierId = request.SupplierId;
 

@@ -24,6 +24,8 @@ namespace NegoSud.Server.Models
         public string Street { get; set; } = string.Empty;
 
         public string Role { get; set; } = string.Empty;
+
+        public List<Order> Orders { get; set; }
 	}
 }
 

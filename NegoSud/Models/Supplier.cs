@@ -6,19 +6,21 @@ namespace NegoSud.Server.Models
 	{
         public int Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; }
 
-        public string Siret { get; set; } = string.Empty;
+        public string Siret { get; set; }
 
-        public string Email { get; set; } = string.Empty;
+        public string Email { get; set; }
 
-        public string Phone { get; set; } = string.Empty;
+        public string Phone { get; set; }
 
-        public string City { get; set; } = string.Empty;
+        public string City { get; set; }
 
-        public string ZipCode { get; set; } = string.Empty;
+        public string ZipCode { get; set; }
 
-        public string Street { get; set; } = string.Empty;
+        public string Street { get; set; }
+
+        public List<Product> Products { get; set; }
     }
 }
 

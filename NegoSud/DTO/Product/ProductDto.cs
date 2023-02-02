@@ -12,27 +12,30 @@ namespace NegoSud.Server.DTO
 
         public string Ref { get; set; } 
 
-        public int UnitPrice { get; set; }
+        public string UnitPrice { get; set; }
 
-        public int PackPrice { get; set; }
+        public string PackPrice { get; set; }
 
-        public int CreationDate { get; set; }
+        public string CreationDate { get; set; }
 
-        public int UpdateDate { get; set; }
+        public string UpdateDate { get; set; }
 
         public string Millesime { get; set; }
 
-        public int Stock { get; set; }
+        public string Stock { get; set; }
 
-        public int StockTreshold { get; set; }
+        public string StockTreshold { get; set; }
 
         public int CategoryId { get; set; }
+
         public Category Category { get; set; }
 
         public int OrderProductId { get; set; }
+
         public OrderProduct OrderProduct { get; set; }
 
         public int SupplierId { get; set; }
+
         public Supplier Supplier { get; set; }
 
     }
