@@ -1,0 +1,19 @@
+<app-header></app-header>
+<section *ngIf = "item">
+  <figure>
+    <img src="{{ item.image }}" alt="">
+  </figure>
+  <div>
+    <h2>{{ item.name }}</h2>
+    <h3 *ngIf = "wineType">{{ wineType.color }}</h3>
+    <ul>
+      <li *ngIf = "provider"><strong>Domaine</strong> : {{ provider.domainName }}</li>
+      <li><strong>Appellation</strong> : {{ item.appellation }}</li>
+      <li><strong>Volume</strong> : {{ item.volume }} cL</li>
+      <li><strong>Année</strong> : {{ item.year }}</li>
+      <li><strong>Prix</strong> : {{ item.unitPrice }} € TTC</li>
+    </ul>
+    <button type="button" class="btn btn-light">Ajouter au panier</button>
+  </div>
+</section>
+<app-footer></app-footer>
