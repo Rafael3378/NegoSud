@@ -1,48 +1,23 @@
 <app-header></app-header>
-<div clas="main">
-    <h1>Nos vins</h1>
+<h1>Nos vins</h1>
+<div class="search">
+  <label>
+    Recherche : <input type="text" [(ngModel)]="term">
+  </label>
+</div>  
+<div class="main">
 
-    <dx-data-grid class="tab" id="gridContainer" [dataSource]="items" [rowAlternationEnabled]="true" keyExpr="id" [showBorders]="true">
-
-      <dxo-search-panel [visible]="true"></dxo-search-panel>
-      <dxo-paging [pageSize]="10"> </dxo-paging>
-      <dxo-pager [visible]="true" [allowedPageSizes]="allowedPageSizes" [displayMode]="displayMode">
-      </dxo-pager>
-      <!--<dxo-editing mode="form" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
-      </dxo-editing>-->
-
-      <dxo-filter-row [visible]="true"></dxo-filter-row>
-      
-      <!--<div class="selected" >
-
-        <img src="{{ selectedEmployee.Picture }}" alt="" />
-        </div>-->
-      <dxi-column dataField="name" caption="Nom"></dxi-column>
-      <dxi-column dataField="appellation" caption="Région"></dxi-column>
-      <dxi-column dataField="volume" caption="Volume"></dxi-column>
-      <dxi-column dataField="year" caption="Année"></dxi-column>
-      <dxi-column dataField="unitPrice" caption="Prix"></dxi-column>
-
-      <dxi-column dataField="wineTypeId" caption="Couleur"> 
-          <dxo-lookup [dataSource]="wineTypes" displayExpr="color" valueExpr="id"></dxo-lookup>
-      </dxi-column>
-
-      <dxi-column dataField="providerId" caption="Domaine">
-          <dxo-lookup [dataSource]="providers" displayExpr="domainName" valueExpr="id"></dxo-lookup>
-      </dxi-column>
-      
-      <!--<dx-button
-            stylingMode="contained"
-            text="Contained"
-            type="normal"
-            [width]="120"
-            (onClick)="click($event)"
-          >
-        </dx-button>-->
-      <!--<button type="button" class="btn btn-light">Ajouter</button>-->
-  </dx-data-grid>
-  <div class="detail" *ngFor="let item of items">
-    <a [routerLink]="['/wine-detail', item.id]">détails : {{ item.name }}</a>
+    <div class="card" style="width: 18rem;" *ngFor="let item of items |filter:term">
+      <img class="card-img-top" src="{{ item.image }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">{{item.year}}</p>
+        <p class="card-text">{{item.domainName}}</p>
+        <p class="card-text">{{item.family}}</p>
+        <p class="card-text">{{item.unitPrice/1.2 | currency: 'EUR' : 'symbol' : '1.2-2'}} HT</p>
+        <a [routerLink]="['/wine-detail', item.id]" class="btn btn-primary">Détails</a>
+        <a [routerLink]="['/panier']" class="btn btn-primary" (click)="addToCart(item)">Ajouter au panier</a>
+      </div>
     </div>
 </div>
 <app-footer></app-footer>

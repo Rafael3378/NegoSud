@@ -8,11 +8,8 @@ export class Customer {
     public email:string;
 
     //public Birthday:Timestamp;
-
     public postalCode:string;
-
     public city:string;
-
     public street:string;
 
 }

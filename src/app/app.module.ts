@@ -17,6 +17,9 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { CustomerService } from './services/customer.service';
 import { ItemService } from './services/item.service';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -41,11 +44,14 @@ import { RouterModule } from '@angular/router';
     DxDataGridModule,
     DxTextBoxModule,
     DxValidatorModule,
-    DxButtonModule
+    DxButtonModule,
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     CustomerService,
-    ItemService
+    ItemService,
+    CurrencyPipe
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,7 @@ import { ItemService } from 'src/app/services/item.service';
 import { Item } from 'src/app/data/item.model';
 import { Provider } from 'src/app/data/provider.model';
 import { WineType } from 'src/app/data/wineType.model';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-wine-card',
@@ -14,11 +15,20 @@ export class WineCardComponent {
 
   //id:number;
   item: Item=<Item>{};
+  items: Item[]=[];
   provider: Provider=<Provider>{};
   wineType: WineType=<WineType>{};
   providerId: number;
   wineTypeId:number;
-  constructor(private route: ActivatedRoute, private itemService: ItemService){}
+  constructor(private route: ActivatedRoute, private itemService: ItemService, public cartService: CartService){}
+
+  addToCart(item) {
+    if (!this.cartService.itemInCart(item)) {
+      item.qtyTotal = 1;
+      this.cartService.addToCart(item); //add items in cart
+      this.items = [...this.cartService.getItems()];
+    }
+  }
 
   ngOnInit(): void {
     //this.id = this.route.snapshot.params['id'];

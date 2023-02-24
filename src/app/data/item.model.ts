@@ -9,6 +9,8 @@ export class Item {
     public boxPrice:number;
     public region:string;
     public image:string;
+    public family:string;
+    public domainName:string;
     public wineTypeId:string;
     public providerId:string;
 }

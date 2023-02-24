@@ -11,9 +11,11 @@
       <li><strong>Appellation</strong> : {{ item.appellation }}</li>
       <li><strong>Volume</strong> : {{ item.volume }} cL</li>
       <li><strong>Année</strong> : {{ item.year }}</li>
-      <li><strong>Prix</strong> : {{ item.unitPrice }} € TTC</li>
+      <li><strong>Prix</strong> : {{ item.unitPrice/1.2 | currency: 'EUR' : 'symbol' : '1.2-2' }} HT</li>
+      <li><strong>Prix carton</strong> : {{ item.boxPrice/1.2 | currency: 'EUR' : 'symbol' : '1.2-2' }}  HT</li>
     </ul>
-    <button type="button" class="btn btn-light">Ajouter au panier</button>
+    <a class="btn btn-primary" [routerLink]="['/panier']" (click)="addToCart(item)">Ajouter au panier</a>
+    <!--<button type="button" class="btn btn-light" (click)="addToCart(item)">Ajouter au panier</button>-->
   </div>
 </section>
 <app-footer></app-footer>
